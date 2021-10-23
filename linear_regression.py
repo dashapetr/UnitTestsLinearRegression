@@ -7,12 +7,12 @@ class SampleLinearRegression:
         self.regressors = regressors
         self.predictor = predictor
 
-    def reshape_input(self):
+    def reshape_regressors(self):
         self.regressors = self.regressors.reshape((-1, 1))
         return self.regressors
 
     def train_model(self):
-        reshaped_regressors = self.reshape_input()
+        reshaped_regressors = self.reshape_regressors()
         model = LinearRegression()
         model.fit(reshaped_regressors, self.predictor)
         return model
@@ -24,3 +24,4 @@ class SampleLinearRegression:
     def make_prediction_on_unseen_data(self, single_input):
         model = self.train_model()
         return model.predict(single_input.reshape(-1, 1))
+
